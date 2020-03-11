@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-playground-ngxpermissions": {
+    "ng-playground-ngxpermissions": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-playground-ngxpermissions",
+            "outputPath": "dist/ng-playground-ngxpermissions",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -67,18 +67,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-playground-ngxpermissions:build"
+            "browserTarget": "ng-playground-ngxpermissions:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-playground-ngxpermissions:build:production"
+              "browserTarget": "ng-playground-ngxpermissions:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-playground-ngxpermissions:build"
+            "browserTarget": "ng-playground-ngxpermissions:build"
           }
         },
         "test": {
@@ -115,15 +115,67 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-playground-ngxpermissions:serve"
+            "devServerTarget": "ng-playground-ngxpermissions:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-playground-ngxpermissions:serve:production"
+              "devServerTarget": "ng-playground-ngxpermissions:serve:production"
             }
           }
         }
       }
-    }},
-  "defaultProject": "ngx-playground-ngxpermissions"
+    },
+    "playground": {
+      "root": "",
+      "sourceRoot": "src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/playground",
+            "index": "src/index.html",
+            "main": "src/main.playground.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "playground:build",
+            "port": 4201
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ng-playground-ngxpermissions"
 }

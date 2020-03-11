@@ -1,0 +1,24 @@
+<p>Home components</p>
+
+<div *ngxPermissionsOnly="['Guest']">
+    Guest can see it
+</div>
+
+<div *ngxPermissionsOnly="['Admin']">
+    Admin can see it
+</div>
+
+<div *ngxPermissionsOnly="['Special']">
+    Special can see it
+</div>
+
+<div *ngxPermissionsOnly="['Manager']">
+    Manager can see it
+</div>
+
+<div class="buttons">
+    <button (click)="addPermissions(['Admin', 'Special', 'Manager'])" *ngIf="!permissionsMap['Admin'] && !permissionsMap['Special'] && !permissionsMap['Manager']">Add Permissions</button>
+    <button (click)="removePermission(['Admin'])" *ngIf="permissionsMap['Admin']">Remove Admin</button>
+    <button (click)="removePermission(['Special'])" *ngIf="permissionsMap['Special']">Remove Special</button>
+    <button (click)="removePermission(['Manager'])" *ngIf="permissionsMap['Manager']">Remove Manager</button>
+</div>
