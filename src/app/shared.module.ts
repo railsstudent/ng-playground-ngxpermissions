@@ -5,7 +5,6 @@ import { NgxPermissionsModule, NgxPermissionsService } from 'ngx-permissions';
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
     NgxPermissionsModule.forChild(),
   ],
   providers: [NgxPermissionsService],
